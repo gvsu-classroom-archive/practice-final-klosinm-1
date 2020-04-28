@@ -1,0 +1,110 @@
+<html>
+
+<head>
+  <title>Test Data</title>
+
+  <style>
+    .mincolor {
+      background-color: aqua;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Test Data</h1>
+
+  <div id="input-boxes">
+    <input type='text'>
+    <input type='text'>
+    <input type='text'>
+    <input type='text'>
+    <input type='text'>
+    <input type='text'>
+    <input type='text'>
+    <input type='text'>
+    <input type='text'>
+    <input type='text'>
+  </div>
+
+  <button onclick="getData()">Submit</button>
+  <button onclick="more()">More</button>
+
+  <p>Maximum: <span id="max" /></p>
+
+  <p>Minimum: <span id="min" /></p>
+
+  <p>Average: <span id="average" /></p>
+
+  <script type="text/javascript">
+
+    function getData() {
+      var inputfromboxes = document.getElementById("input-boxes");
+
+      var inputs = inputfromboxes.children;
+
+      var max = 0;
+      var min = inputs[0].value;
+
+      var avg = 0;
+      var sum = 0;
+
+
+      for (var i = 0; i < inputs.length; i++) {
+        var current = Number(inputs[i].value);
+
+        //average numerator and denominator 
+        avg = avg + current;
+        if (inputs[i].value !== "") {
+          sum = sum + 1;
+
+          if (current < min) {
+            min = current;
+          }
+          if (max <= current) {
+            max = current;
+          }
+
+        }
+      }
+
+      //make sure that inputs were provided
+      if(min != ''){
+        //if user submit twice, reset all colors
+        for (var i = 0; i < inputs.length; i++) {
+          inputs[i].style.backgroundColor = 'white';
+        }
+        //change the colors of the highest and lowest values
+        for (var i = 0; i < inputs.length; i++) {
+          if (inputs[i].value == max) {
+            inputs[i].style.backgroundColor = 'lightgreen';
+          }
+          if (inputs[i].value == min) {
+            inputs[i].style.backgroundColor = 'pink';
+          }
+        }
+
+        average = avg / sum;
+        document.getElementById('max').innerHTML = '' + max;
+        document.getElementById('min').innerHTML = '' + min;
+        document.getElementById('average').innerHTML = '' + average;
+      }
+      
+    }
+
+    function more() {
+      var newbox = document.getElementById("input-boxes");
+      //go through loop 10 times to make 10 boxes
+      for (var i = 0; i < 10; i++) {
+        //make another box
+        var input = document.createElement("input");
+        input.type = 'text';
+        newbox.appendChild(input);
+
+      }
+    }
+  </script>
+
+</body>
+
+</html>
