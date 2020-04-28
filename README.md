@@ -2,10 +2,10 @@
 practice-final-klosinm-1 created by GitHub Classroom
 
 ```
-Run with "localhost:3001/ { pageID }
+Run with "localhost:3001/ { page path }
 ```
 
-Page ID's for respective pages: </br>
+Page paths's for respective pages: </br>
 
 
 Question 1: /getty </br>
