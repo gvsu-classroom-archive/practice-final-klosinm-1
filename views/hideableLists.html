@@ -61,7 +61,43 @@
     </ol>
   </div>
 
-  <script src='hideableList.js'></script>
+
 </body>
 
+<script type="text/javascript">
+
+  // Grab all elements with class 'hl-header'
+  let headers = document.getElementsByClassName('hl-header');
+
+  
+  // Loop through the header elements
+  for (i = 0; i < headers.length; i++) {
+    // add to each event a "click" to call hide method
+    headers[i].addEventListener('click', Hide);
+  
+    // makes arrow be right next to header
+    let newElement = document.createElement("span");
+    newElement.innerHTML = "\u25BC";
+
+    // Place the arrow by the header
+    headers[i].insertBefore(newElement, headers[i].childNodes[0]);
+  }
+
+  function Hide() {
+    let listelemennts = this.nextElementSibling;
+    // if lists are showing
+    if (listelemennts.hidden == false) {
+      listelemennts.hidden = true;
+      listelemennts.style.visibility = "hidden";
+      // Set the first child of the header (the arrow) to point down
+      this.firstChild.innerHTML = "\u25B6";
+    }
+    // lists are hiden, make visable
+    else {
+      listelemennts.hidden = false;
+      listelemennts.style.visibility = "visible";
+      this.firstChild.innerHTML = "\u25BC";
+    }
+  }
+  </script>
 </html>
