@@ -71,6 +71,7 @@ function loadData(inputValue) {
             console.log("Data as received: " + xhr.response);
             //create var data
             let data = ""
+            //see that data can be parced/is a valid ID
             try {
                 data = JSON.parse(xhr.response);
             } catch {
