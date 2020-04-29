@@ -2,7 +2,7 @@ const express = require('express');
 
 
 const app = express();
-const port = 3001;
+const port = 3003;
 
 app.use(express.static("public")); //or single quotes
 app.set('view engine', 'ejs');
@@ -27,7 +27,7 @@ app.get('/maxMin', function (req, res) {
 
 //problem 5
 app.get('/order', function (req, res) {
-    res.render('price.html');
+    res.render('order.html');
 });
 
 //problem4
